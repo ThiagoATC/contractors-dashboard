@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contractors Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div>
+        <h1>Contractors Dashboard</h1>
+        <p>Consolidated view of headcount, deletions, licenses, and savings</p>
+      </div>
+      <div class="source-box">
+        <div class="source-label">Source</div>
+        <div class="source-file">Microsoft Entra ID + AD On-Premises</div>
+        <div class="source-date" id="generatedAt">-</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card accent-base">
+        <div class="card-title">Total User Base</div>
+        <div class="card-subtitle">Latest AD snapshot</div>
+        <div class="card-value" id="totalBase">0</div>
+        <div class="card-trend trend-neutral" id="trendTotalBase">—</div>
+      </div>
+      <div class="card accent-deleted">
+        <div class="card-title">Deleted Users</div>
+        <div class="card-subtitle">Current period</div>
+        <div class="card-value" id="totalDeleted">0</div>
+        <div class="card-trend trend-neutral" id="trendDeleted">—</div>
+      </div>
+      <div class="card accent-license">
+        <div class="card-title">Freed Licenses</div>
+        <div class="card-subtitle">Operational impact</div>
+        <div class="card-value" id="totalLicensesFreed">0</div>
+        <div class="card-trend trend-neutral" id="trendLicenses">—</div>
+      </div>
+      <div class="card accent-cost">
+        <div class="card-title">Cost Saved</div>
+        <div class="card-subtitle">Cumulative savings</div>
+        <div class="card-value" id="totalCostSaved">$0</div>
+        <div class="card-trend trend-neutral" id="trendCost">—</div>
+      </div>
+    </div>
+
+    <div class="grid-2-1">
+      <div class="panel">
+        <div class="panel-title">User Base by Period</div>
+        <div class="panel-subtitle">Daily, weekly, and monthly evolution</div>
+        <div class="chart users-chart" id="usersChart"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Country and License Type</div>
+        <div class="panel-subtitle">Daily distribution</div>
+
+        <div class="section-subtitle">Country</div>
+        <div class="chips" id="countryChips"></div>
+
+        <div class="section-subtitle">License Type</div>
+        <div class="chips" id="licenseTypeChips"></div>
+      </div>
+    </div>
+
+    <div class="grid-2-1">
+      <div class="panel">
+        <div class="panel-title">Cost Saved by Month</div>
+        <div class="panel-subtitle">Monthly savings from Deleted_Users.csv</div>
+        <div class="chart cost-chart" id="costChart"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Deleted Users by License Type</div>
+        <div class="panel-subtitle">Impact by license</div>
+        <div id="deletedByLicense"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Last 10 Deleted Users</div>
+      <div class="panel-subtitle">Recent events</div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Name</th>
+              <th>Deletion Date</th>
+              <th>Country</th>
+              <th>License</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody id="recentDeletedTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
